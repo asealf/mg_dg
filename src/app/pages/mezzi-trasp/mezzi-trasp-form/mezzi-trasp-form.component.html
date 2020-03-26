@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <label>Mezzo trasporto codice</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="mezziTrasp.codice " />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label>Descrizione</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="mezziTrasp.descrizione" />
+      </div>
+    </div>
+    <br>
+    <div class="text-right">
+      <button class="btn btn-secondary" (click)="goToList()">Elenco mezzi trasporto</button>
+      &nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="addMezziTrasp()">Salva mezzo trasporto</button>
+    </div>
+  </div>
+
+

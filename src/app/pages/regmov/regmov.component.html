@@ -1,0 +1,80 @@
+<div class="container movreg ">
+
+   <!-- Filtri -->
+
+      <div class="row">
+        <div class="col-md-3">
+          <label>Tipo registro </label>
+        </div>
+        <div class="col-md-3">
+          <label>Dalla data</label>
+        </div>
+        <div class="col-md-3">
+          <label>Alla data</label>
+        </div>
+        <div class="col-md-3">
+          <label> </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <select class="form-control" [(ngModel)]="datiFiltro.tipoReg" >
+            <option [ngValue]="item.codice" *ngFor="let item of optionRegistro ">{{item.descrizione}}</option>  
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <input type="date" class="form-control" [(ngModel)]="datiFiltro.DallaData " />
+        </div>
+
+        <div class="col-md-3">
+          <input type="date" class="form-control" [(ngModel)]="datiFiltro.AllaData " />
+        </div>
+
+        <div class="col-md-3">
+          <button class="btn btn-primary" (click)="EseguiFiltro(datiFiltro )">Aggiorna</button>
+        </div>
+
+      </div>
+
+      <br/>
+
+</div>
+
+
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th >Registro</th>
+          <th>N.op</th>
+          <th>Data.</th>
+          <th>Descrizione</th>
+          <th></th>            
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of regMov ; let i = index" class="text-center">
+          <td width="4%" >{{ item.tipo_registro }}</td>
+          <td width="4%">{{ item.n_operazione }}</td>
+          <td width="6%">{{ ViewData( item.data_immissione ) }}</td>
+          <td>{{ item.descrizione_operazione }}</td>
+          <td width="10%">
+            <button class="btn btn-primary" (click)="goToUpdateRegMov(item)">Modifica</button>
+          </td>
+          <td width="10%">
+            <button class="btn btn-danger" (click)="deleteRegMov(item.id)">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <button class="btn btn-primary" (click)="goToAddRegMov()">Aggiungi movimento</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-primary" (click)="goToIndex()">Indietro</button>
+  </div>
+
+

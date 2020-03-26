@@ -1,0 +1,41 @@
+<div class="container movreg ">
+   <!-- Filtri -->
+
+   <div class="row">
+    <div class="col-md-3">
+      <label>Tipo registro </label>
+    </div>
+    <div class="col-md-3">
+      <label>Dalla data</label>
+    </div>
+    <div class="col-md-3">
+      <label>Alla data</label>
+    </div>
+    <div class="col-md-3">
+      <label> </label>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <select class="form-control" [(ngModel)]="datiFiltro.tipoReg" >
+        <option [ngValue]="item.codice" *ngFor="let item of optionRegistro ">{{item.descrizione}}</option>  
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <input type="date" class="form-control" [(ngModel)]="datiFiltro.DallaData " />
+    </div>
+
+    <div class="col-md-3">
+      <input type="date" class="form-control" [(ngModel)]="datiFiltro.AllaData " />
+    </div>
+
+    <div class="col-md-3">
+      <button class="btn btn-primary" (click)="Stampa(datiFiltro )">Stampa</button>
+    </div>
+
+  </div>
+
+
+</div>

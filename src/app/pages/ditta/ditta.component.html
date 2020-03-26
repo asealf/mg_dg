@@ -1,0 +1,77 @@
+
+
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <label>Ragione sociale</label>
+      </div>
+      <div class="col-md-10">       
+        <input type="text" class="form-control" [(ngModel)]="ditta.ragione_sociale "   /> 
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <label>Indirizzo</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="ditta.via" />
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+          <label>C.a.p.</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" [(ngModel)]="ditta.cap" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Citta</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" [(ngModel)]="ditta.citta" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Provincia</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" [(ngModel)]="ditta.provincia" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Partita iva</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" [(ngModel)]="ditta.partita_iva" />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <label>Codice fiscale</label>
+        </div>
+        <div class="col-md-10">
+          <input type="text" class="form-control" [(ngModel)]="ditta.codice_fiscale" />
+        </div>
+      </div>
+        
+
+    <br>
+    <div class="text-right">
+      <button class="btn btn-secondary" (click)="goToIndex()">Indietro</button>  
+      &nbsp;&nbsp;    
+      <button class="btn btn-primary" (click)="addDitta()">Salva ditta</button>
+    </div>
+
+  </div>
+

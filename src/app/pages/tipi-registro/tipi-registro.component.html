@@ -1,0 +1,32 @@
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th>No</th>
+          <th>Codice tipo registro</th>
+          <th>Descrizione</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of tipoRegistro ; let i = index" class="text-center">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.codice }}</td>
+          <td>{{ item.descrizione }}</td>
+          <td width="15%">
+            <button class="btn btn-primary" (click)="goToUpdateTipoRegistro(item)">Modifica</button>
+          </td>
+          <td width="15%">
+            <button class="btn btn-danger" (click)="deleteTipoRegistro(item.codice)">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-right">
+    <button class="btn btn-secondary" (click)="goToAddTipoRegistro()">Aggiungi Tipo registro</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-secondary" (click)="goToIndex()">Indietro</button>
+  </div>
+

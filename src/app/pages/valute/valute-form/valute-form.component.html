@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <label>Valuta codice</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="valute.codice " />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label>Descrizione</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="valute.descrizione" />
+      </div>
+    </div>
+    <br>
+    <div class="text-right">
+      <button class="btn btn-secondary" (click)="goToList()">Elenco valuta</button>
+      &nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="addValute()">Salva valuta</button>
+    </div>
+  </div>
+
+

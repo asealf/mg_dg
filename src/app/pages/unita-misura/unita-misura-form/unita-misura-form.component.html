@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <label>Unita misura codice</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="unitaMisura.codice " />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label>Descrizione</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="unitaMisura.descrizione" />
+      </div>
+    </div>
+    <br>
+    <div class="text-right">
+      <button class="btn btn-secondary" (click)="goToList()">Elenco Unita misura</button>
+      &nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="addUnitaMisura()">Salva Unita misura</button>
+    </div>
+  </div>
+

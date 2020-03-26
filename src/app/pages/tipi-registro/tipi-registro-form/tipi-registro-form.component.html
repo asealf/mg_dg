@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <label>Tipo registro codice</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="tipoRegistro.codice " />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label>Descrizione</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="tipoRegistro.descrizione" />
+      </div>
+    </div>
+    <br>
+    <div class="text-right">
+      <button class="btn btn-secondary" (click)="goToList()">Elenco tipi registro </button>
+      &nbsp;&nbsp;
+      <button class="btn btn-primary" (click)="addTipoRegistro()">Salva tipo registrot</button>
+    </div>
+  </div>
+

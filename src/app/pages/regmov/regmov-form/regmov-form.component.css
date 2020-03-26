@@ -1,0 +1,34 @@
+.movreg{
+    background-color: aliceblue;
+}
+
+.carico {
+    background-color: rgb(233, 252, 245);
+}
+
+.scarico {
+    background-color: rgb(233, 252, 245);
+    
+}
+
+.righe {
+
+    background-color: rgb(190, 216, 240);
+    font-size: 12px;
+
+}
+
+.righe-btn-delete{
+    font-weight: normal;
+    background: url('src/assets/delete_24.png');
+    width: 24px;
+    height: 18px;
+}
+
+.righe-btn-edit{
+    font-weight: normal;
+    background: url('src/assets/edit_24.png');
+    width: 24px;
+    height: 20px;
+}
+

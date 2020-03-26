@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <label>Descrizione prodottoa</label>
+      </div>
+      <div class="col-md-10">
+        <input type="text" class="form-control" [(ngModel)]="rigaMov.descrizione_prodotto " />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <label>Unita misura</label>
+      </div>
+      <div class="col-md-4">
+        <select class="form-control" [(ngModel)]="rigaMov.unita_misura" >
+          <option [ngValue]="item.codice" *ngFor="let item of unitaMisura ">{{item.descrizione}}</option>  
+        </select>                            
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+          <label>Quantita</label>
+        </div>
+        <div class="col-md-4">
+          <input type="text" #qta="ngModel" pattern="^\d*(\.\d{2}$)?" class="form-control" [(ngModel)]="rigaMov.quantita" required />
+          <div *ngIf="qta.invalid && (qta.dirty || qta.touched)" class="form-error" >Formato errato</div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-2">
+          <label>Peso Kg</label>
+        </div>
+        <div class="col-md-4">
+          <input type="text" #peso="ngModel" pattern="^\d*(\.\d{2}$)?" class="form-control" [(ngModel)]="rigaMov.peso_kg" />
+          <div *ngIf="peso.invalid && (peso.dirty || peso.touched)" class="form-error" >Formato errato</div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-2">
+          <label>Valuta</label>
+        </div>
+        <div class="col-md-4">
+          <select class="form-control" [(ngModel)]="rigaMov.valuta" >
+            <option [ngValue]="item.codice" *ngFor="let item of valute ">{{item.descrizione}}</option>  
+          </select>                            
+          </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+          <label>Valore</label>
+        </div>
+        <div class="col-md-4">
+          <!--<input type="text" class="form-control" [(ngModel)]="rigaMov.valore" />-->
+          <input type="text" #valore="ngModel" pattern="^\d*(\.\d{2}$)?" class="form-control" [(ngModel)]="rigaMov.valore"  />
+          <div *ngIf="valore.invalid && (valore.dirty || valore.touched)" class="form-error" >Formato errato</div>
+        </div>
+    </div>
+
+
+
+    <br>
+    <div class="text-right">
+      <!--
+      <button class="btn btn-secondary" (click)="goToForm()">Torna indietro</button>
+      &nbsp;&nbsp;
+      -->
+      <button class="btn btn-primary" (click)="addRigaRegMov()">Chiudi</button>
+    </div>
+</div>
+

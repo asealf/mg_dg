@@ -1,0 +1,38 @@
+<!-- navbar.component.html -->
+<nav class="navbar navbar-expand-md navbar-light bg-faded ">
+    <a class="navbar-brand" routerLink="/">
+      <p><img src="assets/logo.png"  alt="Registro dogane Elettra"></p>
+    </a>
+  
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+  
+    <div class="collapse navbar-collapse color-coral" [class.show]="activeNavbar">
+      <ul class="navbar-nav ml-auto text-uppercase">
+
+        <li class="nav-item">
+            <a 
+              class="nav-link" 
+              routerLink="/regmov-list" 
+              routerLinkActive="active">Elenco movimenti</a>
+        </li>
+  
+        <li class="nav-item">
+            <a 
+              class="nav-link" 
+              routerLink="/regmov-stampa" 
+              routerLinkActive="active">Stampa movimenti</a>
+        </li>
+
+        <li class="nav-item">
+          <a 
+            class="nav-link" 
+            routerLink="/tabelle" 
+            routerLinkActive="active">Tabelle</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>

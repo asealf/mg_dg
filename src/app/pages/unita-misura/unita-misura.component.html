@@ -1,0 +1,31 @@
+<div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr class="text-center">
+          <th>No</th>
+          <th>Codice unita misurra</th>
+          <th>Descrizione</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of unitaMisura ; let i = index" class="text-center">
+          <td>{{ i + 1 }}</td>
+          <td>{{ item.codice }}</td>
+          <td>{{ item.descrizione }}</td>
+          <td width="15%">
+            <button class="btn btn-primary" (click)="goToUpdateUnitaMisura(item)">Modifica</button>
+          </td>
+          <td width="15%">
+            <button class="btn btn-danger" (click)="deleteUnitaMisura(item.codice)">Elimina</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-right">
+    <button class="btn btn-secondary" (click)="goToAddUnitaMisura()">Aggiungi Unità misura</button>
+    &nbsp;&nbsp;
+    <button class="btn btn-secondary" (click)="goToIndex()">Indietro</button>
+  </div>
