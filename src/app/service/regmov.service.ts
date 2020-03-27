@@ -21,47 +21,72 @@ export class RegMovService {
 
 
   public getAllRegMov(): Observable<RegMov> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/list';
-    return this.http.get<RegMov>(url);
+    return this.http.get<RegMov>(url ,{headers} );
   }
 
   public getByTipoRegAndDataRegMov(tiporeg:string , data_ini:string, 
       data_fine:string ): Observable<RegMov> {
-    const url = this.baseUrl + '/list_tp_dt/'+tiporeg+'/'+
+
+        const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+        btoa( sessionStorage.getItem('isauth') )  });
+    
+        const url = this.baseUrl + '/list_tp_dt/'+tiporeg+'/'+
       data_ini+'/'+data_fine+'/0/10';
       
-    return this.http.get<RegMov>(url);
+    return this.http.get<RegMov>(url ,{headers} );
   }
 
 
   public addRegMov(regMov: RegMov): Observable<RegMov> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/add';
-    return this.http.post<RegMov>(url, regMov);
+    return this.http.post<RegMov>(url, regMov ,{headers} );
   }
 
   public updateRegMov(regMov: RegMov): Observable<RegMov> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/update';
-    return this.http.put<RegMov>(url, regMov);
+    return this.http.put<RegMov>(url, regMov ,{headers} );
   }
 
   public deleteRegMov(id: number): Observable<RegMov> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/delete/' + id;
-    return this.http.delete<RegMov>(url);
+    return this.http.delete<RegMov>(url ,{headers} );
   }
 
   public findNextN_operazione(): Observable<number>{
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/next_nop';
-    return this.http.get<number>(url);
+    return this.http.get<number>(url ,{headers} );
   }
 
   public stampaMov(tiporeg:string , data_ini:string, 
     data_fine:string , definitivo:string ): Observable <Blob> {
-
+  
     const url = this.baseUrl + '/pdfreport/'+tiporeg+'/'+
       data_ini+'/'+data_fine+'/'+definitivo;
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json',
-      responseType : 'blob'});
+      responseType : 'blob' ,  Authorization: 'Basic ' + 
+      btoa( sessionStorage.getItem('isauth')) });
 
     // alert('stampNov service url='+url);
 
@@ -117,13 +142,6 @@ export class RegMovService {
 
   }
 
-  /*
-  getterDatiFiltro():FiltroMovReg{
-    return this.datiFiltro;
-  }
-
-  setterDatiFiltro( datiFiltro: FiltroMovReg ){
-    this.datiFiltro = datiFiltro;
-  }
-*/
 }
+
+

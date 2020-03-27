@@ -18,7 +18,8 @@
           <label>Num. operazione</label>
         </div>
         <div class="col-md-6">
-          <input [disabled]="true" type="text" class="form-control" [(ngModel)]="regMov.n_operazione" />
+          <input type="text"  #qta="ngModel" pattern="^\d*(\.\d{2}$)?" class="form-control" [(ngModel)]="regMov.n_operazione" />
+          <div *ngIf="qta.invalid && (qta.dirty || qta.touched)" class="form-error" >Formato errato</div>
         </div>
     </div>
 

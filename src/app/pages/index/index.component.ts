@@ -1,6 +1,4 @@
-// import { TipoRegistro } from './../../model/tipo-registro';
-// import { TipoRegistroService } from './../../service/tipo-registro.service';
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,40 +7,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./index.component.css']
 })
 
-export class IndexComponent {
+export class IndexComponent implements OnInit {
 
+  utente :string ;
 
   constructor(
     private route: Router,
   ) { }
 
 
+  ngOnInit(): void {
+  
+    this.utente = sessionStorage.getItem('username');
+    
+  }
+
+
   public goToComponent( nomeComponent: string ): void {
 
     if( nomeComponent==='')
       this.route.navigate(['/']);
-    else if( nomeComponent === 'regmov-list') {
-      this.route.navigate(['/regmov/list']);
+    else if( nomeComponent === 'login') {
+      this.route.navigate(['/login']);
     }
-    else if( nomeComponent === 'regmov-stampa') {
-      this.route.navigate(['/regmov/stampa']);
-    }
-    else if( nomeComponent === 'datiazienda') {
-      this.route.navigate(['/datiazienda']);
-    }
-    else if( nomeComponent === 'tipiregistro') {
-      this.route.navigate(['/tipiregistro']);
-    }
-    else if( nomeComponent === 'mezzitrasporto') {
-      this.route.navigate(['/mezzitrasporto']);
-    }
-    else if( nomeComponent === 'valute') {
-      this.route.navigate(['/valute']);
-    }
-    else if( nomeComponent === 'unitamisura') {
-      this.route.navigate(['/unitamisura']);
-    }
+    else if( nomeComponent === 'logout') {
+      
+      this.utente = "" ;
+      sessionStorage.setItem('username',this.utente);
+      sessionStorage.setItem('isauth',"");
 
+    }
+    
+   
   }
 
 }

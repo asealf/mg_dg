@@ -22,16 +22,39 @@
 </style>
 
 <div class="container">
+
 <div class="row">
   <div class="col-sm-2"></div>
 
-  <div class="col-sm-8 colorblu text-center  text-rosso " >
-    <h1>Gestione movimenti per deposito Elettra in dogana</h1>
-    <h4>Questa procedura permette di registrare i movimenti della merce 
-      in entrata e in uscita dal deposito all'interno del porto</h4>
+    <div class="col-sm-8 colorblu text-center  text-rosso " >
+      <h1>Gestione movimenti per deposito Elettra in dogana</h1>
+      <h4>Questa procedura permette di registrare i movimenti della merce 
+        in entrata e in uscita dal deposito all'interno del porto</h4>
 
-  </div>
+    </div>
   
   <div class="col-sm-2"></div>
 
+</div>
+  
+  <div class="row p-4 ">
+    <div class="col-sm text-center">
+      <div *ngIf="utente"><h4>Benvenuto : {{utente}}    </h4></div>
+    </div>
   </div>
+
+    <div class="row p-4">
+      <div class="col-sm text-center">
+
+        <div *ngIf="!utente">  
+          <button class="btn btn-primary text-center " (click)="goToComponent('login')">Entra ...</button>
+        </div>
+
+        <div *ngIf="utente">  
+          <button class="btn btn-primary text-center " (click)="goToComponent('logout')">Esci ...</button>      
+        </div>
+        
+
+      </div>
+    </div>
+  

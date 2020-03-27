@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UnitaMisura } from './../model/unita-misura';
 
@@ -14,23 +14,39 @@ export class UnitaMisuraService {
   constructor(private http: HttpClient) { }
 
   public getAllUnitaMisura(): Observable<UnitaMisura> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/list';
-    return this.http.get<UnitaMisura>(url);
+    return this.http.get<UnitaMisura>(url ,{headers} );
   }
 
   public addUnitaMisura(unitaMisura: UnitaMisura): Observable<UnitaMisura> {
+   
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/add';
-    return this.http.post<UnitaMisura>(url, unitaMisura);
+    return this.http.post<UnitaMisura>(url, unitaMisura ,{headers} );
   }
 
   public updateUnitaMisura(unitaMisura: UnitaMisura): Observable<UnitaMisura> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/update';
-    return this.http.put<UnitaMisura>(url, unitaMisura);
+    return this.http.put<UnitaMisura>(url, unitaMisura,{headers} );
   }
 
   public deleteUnitaMisura(codice: string): Observable<UnitaMisura> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+    btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/delete/' + codice;
-    return this.http.delete<UnitaMisura>(url);
+    return this.http.delete<UnitaMisura>(url,{headers} );
   }
 
   // Return assigned variable product

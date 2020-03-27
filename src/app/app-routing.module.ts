@@ -23,6 +23,8 @@ import { TabelleMenuComponent } from './pages/tabelle-menu/tabelle-menu.componen
 
 import { StampamovComponent } from './pages/stampamov/stampamov.component'; 
 
+import{ LoginComponent }  from './pages/login/login.component'; 
+
 const routes: Routes = [
   { path: '', component: IndexComponent, pathMatch: 'full' },
   { path: 'tabelle', component: TabelleMenuComponent, pathMatch: 'full' },
@@ -46,6 +48,8 @@ const routes: Routes = [
   
   { path: 'valute', component: ValuteComponent, pathMatch: 'full' },
   { path: 'valute/form', component: ValuteFormComponent, pathMatch: 'full' },
+
+  { path: 'login', component: LoginComponent, pathMatch: 'full' },
 
 ];
 

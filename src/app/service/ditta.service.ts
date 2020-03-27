@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ditta } from './../model/ditta';
 
@@ -14,8 +14,13 @@ export class DittaService {
   constructor(private http: HttpClient) { }
 
   public getDitta(): Observable<Ditta> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+      btoa( sessionStorage.getItem('isauth') )  });
+
     const url = this.baseUrl + '/get';
-    return this.http.get<Ditta>(url);
+
+    return this.http.get<Ditta>(url,{headers});
   }
 
   /*
@@ -26,8 +31,12 @@ export class DittaService {
   */
 
   public updateDitta(ditta: Ditta): Observable<Ditta> {
+
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + 
+      btoa( sessionStorage.getItem('isauth') )  });
+      
     const url = this.baseUrl + '/update';
-    return this.http.put<Ditta>(url, ditta);
+    return this.http.put<Ditta>(url, ditta ,{headers} );
   }
 
   /*

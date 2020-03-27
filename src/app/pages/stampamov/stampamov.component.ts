@@ -79,12 +79,12 @@ export class StampamovComponent implements OnInit {
 
   public Stampa( datiFiltro:FiltroMovReg){
 
-    this.submitMessage('Avvia stampa registro ', 1 );
+    this.submitMessage('Avvia stampa registro '+datiFiltro.tipoReg , 1 );
 
     this.regMovService.stampaMov( datiFiltro.tipoReg ,
       datiFiltro.DallaData, datiFiltro.AllaData, 'N' ).subscribe( (data) => {
         
-        // alert( 'stampaMov component dentro subscribe');
+        
 
         var file = new Blob([data], { type: 'application/pdf' });
         var fileURL = URL.createObjectURL(file);
@@ -92,12 +92,6 @@ export class StampamovComponent implements OnInit {
         // if you want to open PDF in new tab
         window.open(fileURL); 
 
-        var a         = document.createElement('a');
-        a.href        = fileURL; 
-        a.target      = '_blank';
-        a.download    = 'registro.pdf';
-        document.body.appendChild(a);
-        a.click();
       },
       (error) => {
         

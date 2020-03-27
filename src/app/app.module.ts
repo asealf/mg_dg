@@ -22,6 +22,7 @@ import { ValuteComponent } from './pages/valute/valute.component';
 import { ValuteFormComponent } from './pages/valute/valute-form/valute-form.component';
 import { TabelleMenuComponent } from './pages/tabelle-menu/tabelle-menu.component';
 import { StampamovComponent } from './pages/stampamov/stampamov.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { StampamovComponent } from './pages/stampamov/stampamov.component';
     ValuteComponent,
     ValuteFormComponent,
     TabelleMenuComponent,
-    StampamovComponent
+    StampamovComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
