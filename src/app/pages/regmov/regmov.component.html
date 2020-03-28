@@ -77,4 +77,10 @@
     <button class="btn btn-primary" (click)="goToIndex()">Indietro</button>
   </div>
 
-
+<div class="text-right">
+  <ngb-pagination
+  [(page)]="page" 
+  [pageSize]="pageSize"
+  [collectionSize]="sizeItem">
+  </ngb-pagination>
+</div>

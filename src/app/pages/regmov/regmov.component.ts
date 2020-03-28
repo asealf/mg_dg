@@ -17,9 +17,15 @@ import { NotifierService } from 'src/app/notifier/notifier.service';
 export class RegMovComponent implements OnInit {
 
   public regMov:RegMov;
+  public rgm_arr : RegMov[]; 
 
   public datiFiltro : FiltroMovReg ;
   public optionRegistro : TipoRegistro ; 
+
+  // Pagination
+  page : number;
+  pageSize : number;
+  sizeItem : number;
 
   constructor(
     private route: Router,
@@ -51,6 +57,9 @@ export class RegMovComponent implements OnInit {
     this.getAllRegMov();
 
     this.regMovService.getter();
+
+    this.page = 1 ;
+    this.pageSize = 5 ;
 
   }
 
@@ -121,6 +130,10 @@ export class RegMovComponent implements OnInit {
     this.regMovService.getByTipoRegAndDataRegMov( datiFiltro.tipoReg , 
       datiFiltro.DallaData , datiFiltro.AllaData ).subscribe((data) => {
       this.regMov = data;
+
+      this.rgm_arr = JSON.parse( JSON.stringify(this.regMov) );
+
+      this.sizeItem = this.rgm_arr.length ;
 
       sessionStorage.setItem( 'datiFiltro' , JSON.stringify( this.datiFiltro )  );
 
