@@ -16,17 +16,16 @@ import { NotifierService } from 'src/app/notifier/notifier.service';
 })
 export class RegMovComponent implements OnInit {
 
-  public regMov:RegMov;
+  public regMov : RegMov[] ; 
+  /*
   public rgm_arr : RegMov[]; 
+  public regMovPg : RegMov[]  ;
+  */
 
   public datiFiltro : FiltroMovReg ;
   public optionRegistro : TipoRegistro ; 
 
-  // Pagination
-  page : number;
-  pageSize : number;
-  sizeItem : number;
-
+  
   constructor(
     private route: Router,
     private regMovService: RegMovService,
@@ -39,10 +38,21 @@ export class RegMovComponent implements OnInit {
     if( this.datiFiltro === null ){
       this.datiFiltro = new FiltroMovReg();
 
+      this.datiFiltro.tipoReg = undefined ;
+      this.datiFiltro.DallaData = '2020-01-01';
+      this.datiFiltro.AllaData = '2020-12-31';
+      this.datiFiltro.page = 1 ;
+      this.datiFiltro.pageSize = 5;
+      this.datiFiltro.sizeItem = 0 ;
+
       sessionStorage.setItem( 'datiFiltro' , JSON.stringify( this.datiFiltro )  );
     }
+    if( this.datiFiltro.page === undefined ){
+      this.datiFiltro.page = 1;
+      this.datiFiltro.pageSize = 5;
+    } 
   }
-
+ 
   submitMessage( messaggio:string , tipo:number ) {
     
    this._notifier.notify(
@@ -57,9 +67,6 @@ export class RegMovComponent implements OnInit {
     this.getAllRegMov();
 
     this.regMovService.getter();
-
-    this.page = 1 ;
-    this.pageSize = 5 ;
 
   }
 
@@ -77,7 +84,10 @@ export class RegMovComponent implements OnInit {
   
         this.datiFiltro.DallaData = anno+'-01-01' ;
         this.datiFiltro.AllaData = anno+'-12-31' ;
-  
+        this.datiFiltro.page = 1;
+        this.datiFiltro.pageSize = 5;
+        this.datiFiltro.sizeItem = 0;
+    
         sessionStorage.setItem( 'datiFiltro' , JSON.stringify(this.datiFiltro ) );
 
       }
@@ -92,7 +102,6 @@ export class RegMovComponent implements OnInit {
 
   public deleteRegMov(id: number): void {
     this.regMovService.deleteRegMov(id).subscribe(() => {
-      //alert('Delete RegMov Success');
       this.submitMessage('Movimento eliminato', 1 );
       this.getAllRegMov();
     });
@@ -117,6 +126,9 @@ export class RegMovComponent implements OnInit {
 
   public goToUpdateRegMov(regMov: RegMov): void {
     this.regMovService.setter(regMov);
+
+    sessionStorage.setItem( 'datiFiltro' , JSON.stringify( this.datiFiltro )  );
+
     this.route.navigate(['/regmov-list/form']);
   }
 
@@ -129,11 +141,11 @@ export class RegMovComponent implements OnInit {
 
     this.regMovService.getByTipoRegAndDataRegMov( datiFiltro.tipoReg , 
       datiFiltro.DallaData , datiFiltro.AllaData ).subscribe((data) => {
-      this.regMov = data;
 
-      this.rgm_arr = JSON.parse( JSON.stringify(this.regMov) );
+      // this.regMov = data;
+      this.regMov = JSON.parse( JSON.stringify( data ) )
 
-      this.sizeItem = this.rgm_arr.length ;
+      this.datiFiltro.sizeItem = this.regMov.length;
 
       sessionStorage.setItem( 'datiFiltro' , JSON.stringify( this.datiFiltro )  );
 
@@ -145,5 +157,6 @@ export class RegMovComponent implements OnInit {
       
       return( dt.substr(8,2) + '-' + dt.substr(5,2) + '-' + dt.substr(0,4) );
   }
+
 
 }

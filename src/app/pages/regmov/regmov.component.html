@@ -42,7 +42,6 @@
 
 </div>
 
-
 <div class="table-responsive">
     <table class="table">
       <thead>
@@ -56,7 +55,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of regMov ; let i = index" class="text-center">
+        <tr *ngFor="let item of (regMov) | slice: (datiFiltro.page-1) * datiFiltro.pageSize : (datiFiltro.page-1) * datiFiltro.pageSize + datiFiltro.pageSize ; let i = index " class="text-center">
           <td width="4%" >{{ item.tipo_registro }}</td>
           <td width="4%">{{ item.n_operazione }}</td>
           <td width="6%">{{ ViewData( item.data_immissione ) }}</td>
@@ -71,16 +70,25 @@
       </tbody>
     </table>
   </div>
-  <div class="text-center">
-    <button class="btn btn-primary" (click)="goToAddRegMov()">Aggiungi movimento</button>
-    &nbsp;&nbsp;
-    <button class="btn btn-primary" (click)="goToIndex()">Indietro</button>
-  </div>
 
-<div class="text-right">
-  <ngb-pagination
-  [(page)]="page" 
-  [pageSize]="pageSize"
-  [collectionSize]="sizeItem">
-  </ngb-pagination>
-</div>
+  <div class="row">
+    <div class="col-sm-8">
+
+      <div class="text-center">
+        <button class="btn btn-primary" (click)="goToAddRegMov()">Aggiungi movimento</button>
+        &nbsp;&nbsp;
+        <button class="btn btn-primary" (click)="goToIndex()">Indietro</button>
+      </div>
+    </div>
+    
+    <div class="col-sm-4 text-center">
+
+        <ngb-pagination
+        [(page)]="datiFiltro.page" 
+        [pageSize]="datiFiltro.pageSize"
+        [collectionSize]="datiFiltro.sizeItem"
+        >
+        </ngb-pagination>
+    
+    </div>
+  </div>
