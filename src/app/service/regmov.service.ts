@@ -4,20 +4,24 @@ import { RigheMov } from 'src/app/model/righemov';
 import { FiltroMovReg } from 'src/app/model/filtro-mov-reg' ;
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { SharedService } from '../service/shared.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegMovService {
 
-  private baseUrl: any = 'http://localhost:8080/movimentiregistro';
+  public baseUrl : string ;
+  // private baseUrl: any = 'http://localhost:8080/movimentiregistro';
   public regMov: RegMov = new RegMov();
   public rigaMov : RigheMov ;
   public c_righeMov:  RigheMov[]=[];
   public s_righeMov:  RigheMov[]=[];
   public datiFiltro : FiltroMovReg = new FiltroMovReg();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private shr:SharedService) { 
+    this.baseUrl = this.shr.getBaseUrl()+'/movimentiregistro';
+  }
 
 
   public getAllRegMov(): Observable<RegMov> {

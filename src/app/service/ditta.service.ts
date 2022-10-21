@@ -2,16 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Ditta } from './../model/ditta';
+import { SharedService } from '../service/shared.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class DittaService {
 
-  private baseUrl: any = 'http://localhost:8080/ditta';
+  // private baseUrl: any = 'http://localhost:8080/ditta';
   public ditta: Ditta = new Ditta();
+  public baseUrl : string ;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient , private shr:SharedService ) {
+    this.baseUrl = this.shr.getBaseUrl()+'/ditta';
+   }
 
   public getDitta(): Observable<Ditta> {
 

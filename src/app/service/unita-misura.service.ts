@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UnitaMisura } from './../model/unita-misura';
+import { SharedService } from '../service/shared.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UnitaMisuraService {
-
-  private baseUrl: any = 'http://localhost:8080/unitamisura';
+  
+  public baseUrl : string ;
+  // private baseUrl: any = 'http://localhost:8080/unitamisura';
   public unitaMisura: UnitaMisura = new UnitaMisura();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private shr:SharedService ) { 
+    this.baseUrl = this.shr.getBaseUrl()+'/unitamisura';
+  }
 
   public getAllUnitaMisura(): Observable<UnitaMisura> {
 

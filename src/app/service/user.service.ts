@@ -3,17 +3,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from './../model/user';
+import { SharedService } from '../service/shared.service'
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  private baseUrl: any = 'http://localhost:8080';
   public User = new User();
+  public baseUrl : string ;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private shr:SharedService) { 
+    this.baseUrl = this.shr.getBaseUrl();
+    console.log("user.service baseUrl:"+this.baseUrl);
+  }
 
 
   authenticate(username:string, password : string) {

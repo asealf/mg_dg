@@ -2,16 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MezziTrasp } from './../model/mezzi-trasp';
+import { SharedService } from '../service/shared.service'
 
 @Injectable({
   providedIn: 'root'
 })
 export class MezziTraspService {
 
-  private baseUrl: any = 'http://localhost:8080/mezzitrasporto';
   public mezziTrasp: MezziTrasp = new MezziTrasp();
+  public baseUrl : string ;
 
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient, private shr:SharedService) {
+    this.baseUrl = this.shr.getBaseUrl()+'/mezzitrasporto';
+   }
 
   public getAllMezziTrasp(): Observable<MezziTrasp> {
 
