@@ -50,7 +50,7 @@ public class GeneratePdfReport {
             PdfContentByte cb = writer.getDirectContent();
 //            Phrase header = new Phrase("this is a header", ffont);
             pagina ++;
-            Phrase footer = new Phrase("--------- PerezSped -------    pag. "+pagina.toString() ,ffont);
+            Phrase footer = new Phrase("--------- MGDG -------    pag. "+pagina.toString() ,ffont);
             
 //            ColumnText.showTextAligned(cb, Element.ALIGN_CENTER,
 //                    header,
